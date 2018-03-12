@@ -3,11 +3,14 @@ from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.core.urlresolvers import reverse
 from accounts.models import GuestEmail
+import os
 
 User = settings.AUTH_USER_MODEL
 
 import stripe
-stripe.api_key = 'sk_test_x33KBxusHfdA7eXMyaHdJp6i'
+
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY','sk_test_x33KBxusHfdA7eXMyaHdJp6i')
+stripe.api_key = STRIPE_SECRET_KEY
 
 class BillingProfileManager(models.Manager):
     def new_or_get(self, request):

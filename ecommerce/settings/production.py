@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@wxx)k-qy7y_86qemovs$u@9$knpk@am_#x6lr_q2p-(tuko)7'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -51,8 +51,8 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'accounts.User' #changes built in user model to ours
 
-STRIPE_SECRET_KEY = 'sk_test_x33KBxusHfdA7eXMyaHdJp6i'
-STRIPE_PUB_KEY = 'pk_test_oXY7CAW0bxemHlmDIvnpw4TB'
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY','sk_test_x33KBxusHfdA7eXMyaHdJp6i')
+STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY','pk_test_oXY7CAW0bxemHlmDIvnpw4TB')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -150,6 +150,8 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+
+from ecommerce.aws.conf import *
 
 
 CORS_REPLACE_HTTPS_REFERER      = True
