@@ -1,0 +1,72 @@
+[
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "title": "T-Shirt",
+        "slug": "t-shirt",
+        "description": "This is awesome, buy it",
+        "price": "10.00",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-02-21T19:56:00.518Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "title": "InGenio",
+        "slug": "ingenio",
+        "description": "Rally Cientifico",
+        "price": "600.00",
+        "image": "products/156801301/156801301.png",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-02-21T19:56:00.518Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+        "title": "Dadbox",
+        "slug": "dadbox",
+        "description": "yeahhh",
+        "price": "350.00",
+        "image": "",
+        "featured": true,
+        "active": true,
+        "timestamp": "2018-02-21T19:56:00.518Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+        "title": "t-shirt",
+        "slug": "t-shirt-449d",
+        "description": "another one",
+        "price": "39.99",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-02-21T19:56:00.518Z"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+        "title": "Taller de Innovaci\u00f3n",
+        "slug": "taller-de-innovacion",
+        "description": "\u00a1Nosotros te preparamos para ser el /la coach de los l\u00edderes del futuro!\r\n\r\nJuntos y a la par de las tendencias mundiales en educaci\u00f3n, innovaci\u00f3n y ciencias humanas, te daremos de manera l\u00fadica, din\u00e1mica y experiencial, las herramientas que est\u00e1n revolucionando el futuro de las pr\u00f3ximas generaciones.\r\n\r\nPara padres con hijos de 5 a 10 a\u00f1os.\r\n\r\n\u00a1No busques ser su maestro (a), cuando puedes ser su coach y compa\u00f1ero (a) de aventuras!\r\n\r\nTemas del taller\r\n\r\n1.El valor de la innovaci\u00f3n y Design Thinking aplicado a la vida diaria.\r\n2.\u00bfC\u00f3mo ense\u00f1ar innovaci\u00f3n a nuestros hij@s en casa?\r\n3.Tips para desarrollar los distintos tipos de inteligencia de mi hij@.\r\n4.Mec\u00e1nicas y herramientas de ense\u00f1anza para ni\u00f1@s.\r\nNuestros hijos (as) cada vez exigen un modelo distinto de educaci\u00f3n que trascienda m\u00e1s all\u00e1 de la escuela. El futuro que les espera ser\u00e1 demasiado retador y es normal que te preocupes y cuestiones si est\u00e1s dando todo para preparar a tus hijos para ser los pr\u00f3ximos l\u00edderes del futuro.\r\n\r\nEn los pa\u00edses con los mejores niveles educativos y visi\u00f3n futurista est\u00e1n ya aplicando una educaci\u00f3n m\u00e1s personalizada, que equilibre los avances tecnol\u00f3gicos y el factor humano en los ni\u00f1os, pero sobre todo que trascienda al colegio e impacte en casa y en otros espacios.\r\n\r\n\u00bfQu\u00e9 ofrecemos?\r\n\r\nPrepararte para ser el coach de tus hijos(as) a la par de las tendencias mundiales en innovaci\u00f3n, pensamiento creativo y ciencias de la felicidad.\r\nAdquirir herramientas para generar una cultura de creatividad, invenci\u00f3n, sensibilizaci\u00f3n y conciencia colectiva en casa.\r\nFormar parte del desarrollo cognitivo de sus hijos mediante la estimulaci\u00f3n, bonding, experimentaci\u00f3n y aprendizaje.\r\n\u00bfPor qu\u00e9 no? Formar parte de la diversi\u00f3n, aprendizaje y estimulaci\u00f3n, pero sobre todo de la revoluci\u00f3n educativa y de paternidad que est\u00e1 en todo el mundo",
+        "price": "1000.00",
+        "image": "",
+        "featured": false,
+        "active": true,
+        "timestamp": "2018-02-21T19:56:00.518Z"
+    }
+}
+]
