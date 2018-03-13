@@ -11,9 +11,9 @@ from .models import GuestEmail
 
 from .forms import LoginForm, RegisterForm, GuestForm
 
-@login_required
-def account_home_view(request):
-    return render(request, "accounts/home.html", {})
+# @login_required
+# def account_home_view(request):
+#     return render(request, "accounts/home.html", {})
 
 
 class AccountHomeView(LoginRequiredMixin, DetailView):
