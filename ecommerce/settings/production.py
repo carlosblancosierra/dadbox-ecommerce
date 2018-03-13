@@ -35,7 +35,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Dadbox <noreply@dadbox.mx>'
 
 MANAGERS = (
-    ("noreply@dadbox.mx","Carlos Blanco")
+    ("Carlos Blanco","noreply@dadbox.mx")
     )
 
 ADMINS = MANAGERS
