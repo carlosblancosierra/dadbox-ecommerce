@@ -64,6 +64,10 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'accounts.User' #changes built in user model to ours
 
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
+LOGOUT_URL = '/logout'
+
 STRIPE_SECRET_KEY = 'sk_test_x33KBxusHfdA7eXMyaHdJp6i'
 STRIPE_PUB_KEY = 'pk_test_oXY7CAW0bxemHlmDIvnpw4TB'
 
