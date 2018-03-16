@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conrib import messages
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, FormView, DetailView
 from django.http import HttpResponse
@@ -63,6 +64,9 @@ class LoginView(FormView):
         user = authenticate(request, username = email, password = password)
 
         if user is not None:
+            if not user.is_active:
+                messages.error(request, "This User is Inactive")
+                return super(LoginView, self).form_invalid(form)
             login(request, user)
             try:
                 del request.session['guest_email_id']
