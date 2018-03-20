@@ -33,6 +33,8 @@ EMAIL_HOST_PASSWORD = 'startupmexico.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Dadbox <noreply@dadbox.mx>'
+BASE_URL = '127.0.0.1:8000'
+
 
 MANAGERS = (
     ("Dadbox","noreply@dadbox.mx")

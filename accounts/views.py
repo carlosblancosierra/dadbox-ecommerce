@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.conrib import messages
+from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, FormView, DetailView
 from django.http import HttpResponse

@@ -33,6 +33,7 @@ EMAIL_HOST_PASSWORD = 'startupmexico.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Dadbox <noreply@dadbox.mx>'
+BASE_URL = 'https://dadbox-python-ecommerce.herokuapp.com/'
 
 MANAGERS = (
     ("Dadbox","noreply@dadbox.mx")
