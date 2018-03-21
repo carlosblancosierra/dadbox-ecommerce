@@ -76,28 +76,16 @@ class AccountEmailActivateView(FormMixin, View):
         context = {'form':form, 'key': self.key}
         return render(self.request, 'registration/activation-error.html', context)
 
-def guest_register_view(request):
-    form = GuestForm(request.POST or None)
-    context = {
-        "form": form
-    }
-    # print("User is logged in")
-    #print(request.user.is_authenticated())
-    next_ = request.GET.get('next')
-    next_post = request.POST.get('next')
-    redirect_path = next_ or next_post or None
+class GuestRegisterView(NextUrlMixin, RequestFormAttachMixin, CreateView):
+    form_class = GuestForm
+    default_next = '/register/'
 
-    if form.is_valid():
-        email = form.cleaned_data.get("email")
-        new_guest_email = GuestEmail.objects.create(email=email)
-        request.session['guest_email_id'] = new_guest_email.id
+    def get_success_url(self):
+        return self.get_next_url()
 
-        if is_safe_url(redirect_path, request.get_host()):
-            return redirect(redirect_path)
-        else:
-            return redirect("/register/")
+    def form_invalid(self, form):
+        return redirect(self.default_next)
 
-    return redirect("/register/")
 
 class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
     form_class = LoginForm
