@@ -101,6 +101,9 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'accounts/register.html'
 
+    def get_success_url(self):
+        return reverse("login")
+
 class UserDetailUpdateView(LoginRequiredMixin, UpdateView):
     form_class = UserDetailChangeForm
     template_name = 'accounts/detail-update-view.html'

@@ -11,10 +11,15 @@
         </div>
 
         <div class='col-12 col-md-6 '>
-            Continue as Guest
+            <p class="lead">New to Dadbox?</p>
+
+
+            <a class="btn btn-primary" href="{% url 'register' %}">Create you Dadbox Account</a>
+
+            <!-- Continue as Guest
 
             {% url "guest_register" as guest_register_url %}
-            {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
+            {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %} -->
         </div>
     </div>
 
