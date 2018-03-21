@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
@@ -74,8 +74,50 @@ class GuestForm(forms.Form):
 class LoginForm(forms.Form):
     """docstring for ClassName"""
     email = forms.EmailField(label='Email')
-    password = forms.CharField(
-        widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super(LoginForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        request = self.request
+        data = self.cleaned_data
+        email = data.get("email")
+        password = data.get("password")
+        user = authenticate(request, username = email, password = password)
+        if user is None:
+            raise forms.ValidationError("Invalid Credentials")
+        login(request,user)
+        self.user = user
+        #user_logged_in.send(user.__class__,instance=user, request=request)
+        try:
+            del request.session['guest_email_id']
+        except:
+            pass
+        return data
+
+    # def form_valid(self, form):
+    #     request = self.request
+    #     next_ = request.GET.get('next')
+    #     next_post = request.POST.get('next')
+    #     redirect_path = next_ or next_post or None
+
+
+    #     if user is not None:
+    #         if not user.is_active:
+    #             messages.error(request, "This User is Inactive")
+    #             return super(LoginView, self).form_invalid(form)
+    #         login(request, user)
+    #         try:
+    #             del request.session['guest_email_id']
+    #         except:
+    #             pass
+    #         if is_safe_url(redirect_path, request.get_host()):
+    #             return redirect(redirect_path)
+    #         else:
+    #             return redirect("/")
+    #     return super(LoginView, self).form_invalid(form)
 
 class RegisterForm(forms.ModelForm):
     """A form for creating new users. Includes all the required

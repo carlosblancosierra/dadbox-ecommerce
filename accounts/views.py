@@ -11,8 +11,8 @@ from django.shortcuts import render, redirect
 from django.utils.http import is_safe_url
 from django.utils.safestring import mark_safe
 
+from ecommerce.mixins import NextUrlMixin, RequestFormAttachMixin
 from .models import GuestEmail, EmailActivation
-
 from .forms import LoginForm, RegisterForm, GuestForm, ReactivateEmailForm
 
 # @login_required
@@ -99,35 +99,15 @@ def guest_register_view(request):
 
     return redirect("/register/")
 
-class LoginView(FormView):
+class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
     form_class = LoginForm
     success_url = '/'
     template_name = 'accounts/login.html'
+    default_next = '/'
 
     def form_valid(self, form):
-        request = self.request
-        next_ = request.GET.get('next')
-        next_post = request.POST.get('next')
-        redirect_path = next_ or next_post or None
-
-        email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password")
-        user = authenticate(request, username = email, password = password)
-
-        if user is not None:
-            if not user.is_active:
-                messages.error(request, "This User is Inactive")
-                return super(LoginView, self).form_invalid(form)
-            login(request, user)
-            try:
-                del request.session['guest_email_id']
-            except:
-                pass
-            if is_safe_url(redirect_path, request.get_host()):
-                return redirect(redirect_path)
-            else:
-                return redirect("/")
-        return super(LoginView, self).form_invalid(form)
+        next_path = self.get_next_url()
+        return redirect(next_path)
 
 class RegisterView(CreateView):
     form_class = RegisterForm
