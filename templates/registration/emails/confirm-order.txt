@@ -1,0 +1,19 @@
+Order id: {{ object.order_id }}
+
+Items:
+    {% for product in object.cart.products.all %}
+        {{ product }}
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+
+Shipping Address: {{shipping_address.get_address}}
+
+Billing Address: {{billing_address.get_address}}
+
+Payment Method: {{ billing_profile.default_card }}
+
+Cart Total: {{ cart.total }}
+
+Shipping Total: {{ shipping_total }}
+
+Order Total: {{ total }}

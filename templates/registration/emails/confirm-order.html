@@ -1,0 +1,19 @@
+<h1>Order id: {{ object.order_id }}</h1>
+
+<p>Items:
+    {% for product in object.cart.products.all %}
+        {{ product }}
+        {% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+<p>Shipping Address: {{object.shipping_address.get_address}}</p>
+
+<p>Billing Address: {{object.billing_address.get_address}}</p>
+
+<p>Payment Method: {{ billing_profile.default_card }}</p>
+
+<p>Cart Total: {{ object.cart.total }}</p>
+
+<p>Shipping Total: {{ object.shipping_total }}</p>
+
+<p>Order Total: {{ object.total }}</p>

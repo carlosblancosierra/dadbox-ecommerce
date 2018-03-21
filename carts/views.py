@@ -115,12 +115,12 @@ def checkout_home(request):
 
 
     if request.method == "POST":
-        'some check that order is done'
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, charge_msg = billing_profile.charge(order_obj)
             if did_charge:
                 order_obj.mark_paid()
+                order_obj.send_confirmation()
                 request.session['cart_items'] = 0
                 del request.session['cart_id']
                 if not billing_profile.user:
@@ -142,10 +142,6 @@ def checkout_home(request):
     }
 
     return render(request, "carts/checkout.html", context)
-
-
-
-
 
 
 
