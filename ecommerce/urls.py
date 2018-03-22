@@ -22,7 +22,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.views.generic import RedirectView
 
-from accounts.views import LoginView, RegisterView, GuestRegisterView
+from accounts.views import LoginView, RegisterView, GuestRegisterView, ReferredBuyerRegisterView
 from addresses.views import checkout_address_create_view, checkout_address_reuse_view
 from billing.views import payment_method_view, payment_method_createview
 from carts.views import cart_detail_api_view
@@ -46,6 +46,7 @@ urlpatterns = [
     url(r'^billing/payment-method/$', payment_method_view, name='billing-payment-method'),
     url(r'^billing/payment-method/create/$', payment_method_createview, name='billing-payment-method-endpoint'),
     url(r'^register/$', RegisterView.as_view(), name='register'),
+    url(r'^register/referred/$', ReferredBuyerRegisterView.as_view(), name='register-referred'),
     url(r'^orders/', include("orders.urls", namespace = 'orders')),
     url(r'^products/', include("products.urls", namespace = 'products')),
     url(r'^search/', include("search.urls", namespace = 'search')),

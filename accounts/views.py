@@ -13,7 +13,7 @@ from django.utils.safestring import mark_safe
 
 from ecommerce.mixins import NextUrlMixin, RequestFormAttachMixin
 from .models import GuestEmail, EmailActivation
-from .forms import LoginForm, RegisterForm, GuestForm, ReactivateEmailForm, UserDetailChangeForm
+from .forms import LoginForm, RegisterForm, GuestForm, ReactivateEmailForm, UserDetailChangeForm, ReferredBuyerRegisterForm
 
 # @login_required
 # def account_home_view(request):
@@ -99,6 +99,13 @@ class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
 
 class RegisterView(CreateView):
     form_class = RegisterForm
+    template_name = 'accounts/register.html'
+
+    def get_success_url(self):
+        return reverse("login")
+
+class ReferredBuyerRegisterView(CreateView):
+    form_class = ReferredBuyerRegisterForm
     template_name = 'accounts/register.html'
 
     def get_success_url(self):

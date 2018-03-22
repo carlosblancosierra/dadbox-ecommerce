@@ -15,6 +15,8 @@ from django.utils import timezone
 
 from ecommerce.utils import random_string_generator, unique_key_generator
 
+User = settings.AUTH_USER_MODEL
+
 #send_mail(subject, message, from_email, recipient_list, html_message)
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
@@ -67,6 +69,8 @@ class User(AbstractBaseUser):
     # seller      = models.BooleanField(default=False) #vendedora
     # confirm     = models.BooleanField(default=False)
     # confirmedDate = models.DateTimeField()
+    buyers      = models.ManyToManyField(User, blank=True)
+    seller_code = models.CharField(max_length=255, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     # USERNAME_FIELD and password are required by default
